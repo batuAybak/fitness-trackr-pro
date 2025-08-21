@@ -63,6 +63,13 @@ export default function ActivityDetailsPage() {
           onClick={() => {
             setDeleteCalled(true);
             deleteActivity();
+            /**
+             * Alternative concept, which is applied to RoutineDetailsPage():
+             * In Login.jsx, create a state var [sessionUsername, setSessionUsername] = useState();
+             * setSessionUsername(username) in login page
+             * Run deleteActivity(), then compare creatorName with sessionUsername,
+             * according to that result, navigate or not
+             */
           }}
         >
           {deleteLoading ? "Deleting" : deleteError ? deleteError : "Delete"}
