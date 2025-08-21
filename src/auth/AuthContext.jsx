@@ -12,6 +12,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState();
+  const [sessionUsername, setSessionUsername] = useState();
 
   const register = async (credentials) => {
     const response = await fetch(API + "/users/register", {
@@ -41,7 +42,14 @@ export function AuthProvider({ children }) {
 
   const logout = () => setToken(null);
 
-  const value = { token, register, login, logout };
+  const value = {
+    token,
+    register,
+    login,
+    logout,
+    sessionUsername,
+    setSessionUsername,
+  };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
