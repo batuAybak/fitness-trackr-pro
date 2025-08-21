@@ -29,6 +29,11 @@ export default function ActivityDetailsPage() {
    * Added a useEffect to navigate after deletion is successful
    * If delete button clicked, loading completed and no delete errors,
    * navigate to activities page.
+   *
+   * Because deleteLoading and deleteError are false before and after deleteActivity(),
+   * navigate("/") would run before and after deleteActivity().
+   * I needed one more state variable (deleteCalled),
+   * so that I am able to execute navigate("/") AFTER the deleteActivity().
    */
   useEffect(() => {
     if (!deleteLoading && !deleteError && deleteCalled) {
